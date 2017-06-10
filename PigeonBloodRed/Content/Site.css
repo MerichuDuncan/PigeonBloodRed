@@ -141,176 +141,125 @@ textarea {
         top: 45%;
     }
 }
-
-@font-face {
-    font-family: "SSSocialCircle";
-    src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/ss-social-circle.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-}
-
+/* reset */
 * {
-    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.ss-icon {
-    font-family: "SSSocialCircle";
-    text-decoration: none;
-    text-rendering: optimizeLegibility;
-    -ms-font-feature-settings: "liga" 1;
-    -o-font-feature-settings: "liga";
-    -webkit-font-feature-settings: "liga";
-    font-feature-settings: "liga";
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-nav {
+#wrapper {
     position: absolute;
-    left: 43%;
-    top: 33%;
-    width: 7rem;
-    height: 7rem;
-    z-index: initial;
-    line-height: 7rem;
-    border-radius: 50%;
-    -webkit-transition: .3s;
-    transition: .3s;
-    background: #f00;
-    outline: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
-    nav:hover, nav:focus {
-        background: #333;
-    }
+label {
+    cursor: pointer;
+}
 
-    nav:before, nav:after, nav > span {
-        position: absolute;
-        left: 27%;
-        content: "";
-        display: block;
-        width: 46%;
-        top: 33%;
-        height: 8%;
-        background: #fff;
-        -webkit-transform-origin: center;
-        transform-origin: center;
-        -webkit-transition: .5s;
-        transition: .5s;
-    }
-
-    nav span {
-        top: 46%;
-    }
-
-    nav:after {
-        top: 60%;
-    }
-
-    nav.clicked:before {
-        -webkit-animation: getcrossedpos .6s forwards;
-        animation: getcrossedpos .6s forwards;
-    }
-
-    nav.clicked:after {
-        -webkit-animation: getcrossedneg .6s forwards;
-        animation: getcrossedneg .6s forwards;
-    }
-
-    nav.clicked span#center-bar {
-        opacity: 0;
-    }
-
-    nav:hover {
-        cursor: pointer;
-    }
-
-    nav.clicked {
-        background: #000;
+    label:focus {
         outline: none;
     }
 
-    nav a {
-        width: 5rem;
-        height: 5rem;
-        border-radius: 50%;
-        background: red;
-        text-align: center;
-        line-height: 1.5;
-        color: #fff;
-        text-decoration: none;
+.menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff;
+    width: 240px;
+    height: 100%;
+    transform: translate3d(-240px, 0, 0);
+    transition: transform 0.35s;
+}
+
+    .menu label.menu-toggle {
         position: absolute;
-        font-size: 4rem;
+        right: -60px;
+        width: 60px;
+        height: 60px;
+        line-height: 0px;
+        display: block;
+        padding: 0;
+        text-indent: -9999px;
+        background: #fff url(https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/menu-alt-512.png) 50% 50%/25px 25px no-repeat;
+    }
+
+    .menu ul li > label {
+        background: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-right-b-128.png) 95% 50%/16px 16px no-repeat;
+    }
+
+    .menu ul li a, .menu ul li label {
+        display: block;
         text-align: center;
-        left: 1rem;
-        top: 1rem;
-        -webkit-transition: .4s;
-        transition: .4s;
-        z-index: -1;
+        padding: 0 20px;
+        line-height: 60px;
+        text-decoration: none;
+        color: #000;
     }
 
-        nav a:hover, nav a:focus {
-            background-color: #000;
+        .menu ul li a:hover, .menu ul li label:hover {
+            color: #666;
         }
 
-        nav a:nth-child(1) {
-            -webkit-transform: rotate(-72deg);
-            transform: rotate(-72deg);
+/* hide inputs */
+.menu-checkbox {
+    display: none;
+}
+
+/* hide navigation icon for sublabels */
+.menu .menu label.menu-toggle {
+    background: none;
+}
+
+/* fade in checked menu */
+.menu-checkbox:checked + .menu {
+    transform: translate3d(0, 0, 0);
+}
+
+/* for show */
+html, body {
+    height: 100%;
+}
+
+body {
+    background: url(https://37.media.tumblr.com/f6c67ec2821a91051e4175f8a102e1e2/tumblr_n6rzpcsMk41st5lhmo1_1280.jpg)50% 50% / cover;
+    background-position: center;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+#info {
+    display: table;
+    background: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    width: 100%;
+}
+
+    #info #info-content {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 12px;
+    }
+
+        #info #info-content h1 {
+            color: #fff;
+            border: 3px solid #fff;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.1);
+            font-size: 22px;
+            font-weight: normal;
+            padding: 20px;
+            margin: 10px;
+            display: inline-block;
         }
 
-    nav.clicked a:nth-child(1) {
-        -webkit-transform: rotate(-72deg) translateX(7rem) rotate(--72deg);
-        transform: rotate(-72deg) translateX(7rem) rotate(--72deg);
-    }
-
-    nav a:nth-child(2) {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-
-    nav.clicked a:nth-child(2) {
-        -webkit-transform: rotate(0deg) translateX(7rem) rotate(-0deg);
-        transform: rotate(0deg) translateX(7rem) rotate(-0deg);
-    }
-
-    nav a:nth-child(3) {
-        -webkit-transform: rotate(72deg);
-        transform: rotate(72deg);
-    }
-
-    nav.clicked a:nth-child(3) {
-        -webkit-transform: rotate(72deg) translateX(7rem) rotate(-72deg);
-        transform: rotate(72deg) translateX(7rem) rotate(-72deg);
-    }
-
-    nav a:nth-child(4) {
-        -webkit-transform: rotate(144deg);
-        transform: rotate(144deg);
-    }
-
-    nav.clicked a:nth-child(4) {
-        -webkit-transform: rotate(144deg) translateX(7rem) rotate(-144deg);
-        transform: rotate(144deg) translateX(7rem) rotate(-144deg);
-    }
-
-    nav a:nth-child(5) {
-        -webkit-transform: rotate(216deg);
-        transform: rotate(216deg);
-    }
-
-    nav.clicked a:nth-child(5) {
-        -webkit-transform: rotate(216deg) translateX(7rem) rotate(-216deg);
-        transform: rotate(216deg) translateX(7rem) rotate(-216deg);
-    }
-
-    nav a:nth-child(6) {
-        -webkit-transform: rotate(288deg);
-        transform: rotate(288deg);
-    }
-
-    nav.clicked a:nth-child(6) {
-        -webkit-transform: rotate(288deg) translateX(7rem) rotate(-288deg);
-        transform: rotate(288deg) translateX(7rem) rotate(-288deg);
-    }
-
-
+            #info #info-content h1 strong {
+                display: block;
+                font-size: 26px;
+            }
